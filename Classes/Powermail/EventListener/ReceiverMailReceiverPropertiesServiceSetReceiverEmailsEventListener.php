@@ -25,16 +25,11 @@ final class ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEventListener
 
         if ($zabbixKey !== '' && $zabbixKey === $key) {
 
+            $email = GeneralUtility::makeInstance(ExtensionConfiguration::class)
+                ->get('form_end2end', 'email');
 
-
-            $event->setEmailArray(['']);
-
-            DebugUtility::debug($event);
-            exit();
-
+            $event->setEmailArray([$email]);
         }
-
-
 
     }
 }
