@@ -1,0 +1,6 @@
+
+# cat=Backend; type=string; label=Key
+key =
+
+# cat=Backend; type=string; label=Target email address
+email =

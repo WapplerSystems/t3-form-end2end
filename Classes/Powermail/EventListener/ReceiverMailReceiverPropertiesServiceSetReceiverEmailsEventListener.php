@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace WapplerSystems\MailEnd2End\Powermail\EventListener;
+namespace WapplerSystems\FormEnd2End\Powermail\EventListener;
 
 use In2code\Powermail\Events\ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEvent;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEventListener
 {
@@ -16,15 +18,23 @@ final class ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEventListener
         /** @var ServerRequestInterface $request */
         $request = $GLOBALS['TYPO3_REQUEST'];
         $headers = $request->getHeaders();
-        $zabbixKey = $headers['e2e-monitoring-key'][0] ?? '';
-        if ($zabbixKey !== '') {
+        $zabbixKey = $headers['e2e-key'][0] ?? '';
+
+        $key = GeneralUtility::makeInstance(ExtensionConfiguration::class)
+            ->get('form_end2end', 'key');
+
+        if ($zabbixKey !== '' && $zabbixKey === $key) {
+
+
 
             $event->setEmailArray(['']);
 
+            DebugUtility::debug($event);
+            exit();
+
         }
 
-        DebugUtility::debug($event);
-        exit();
+
 
     }
 }

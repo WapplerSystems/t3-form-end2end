@@ -4,11 +4,11 @@ services:
     autoconfigure: true
     public: false
 
-  WapplerSystems\MailEnd2End\:
+  WapplerSystems\FormEnd2End\:
     resource: '../Classes/*'
 
-  WapplerSystems\MailEnd2End\Powermail\EventListener\ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEventListener:
+  WapplerSystems\FormEnd2End\Powermail\EventListener\ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEventListener:
     tags:
       - name: event.listener
         method: __invoke
-        identifier: 'wapplersystems-mail-e2e/receiver-mail-receiver-properties-service-set-receiver-emails'
+        identifier: 'wapplersystems-form-e2e/receiver-mail-receiver-properties-service-set-receiver-emails'

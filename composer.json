@@ -32,12 +32,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"WapplerSystems\\MailEnd2End\\": "Classes"
+			"WapplerSystems\\FormEnd2End\\": "Classes"
 		}
 	},
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "mail_end2end"
+			"extension-key": "form_end2end"
 		}
 	}
 }
