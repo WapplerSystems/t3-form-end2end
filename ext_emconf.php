@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Email end to end testing',
-    'description' => '',
+    'title' => 'Formular end to end testing',
+    'description' => 'Formular end 2 end tests for TYPO3 form and powermail. Changes the email addresses by request header.',
     'category' => 'fe',
     'version' => '12.0.0',
     'state' => 'stable',

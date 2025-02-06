@@ -1,11 +1,14 @@
 {
-	"name": "wapplersystems/mail-end2end",
+	"name": "wapplersystems/form-end2end",
 	"type": "typo3-cms-extension",
-	"description": "",
+	"description": "Formular end 2 end tests for TYPO3 form and powermail. Changes the email addresses by request header.",
 	"keywords": [
 		"TYPO3",
 		"extension",
 		"e2e",
+		"form",
+		"powermail",
+		"formular",
 		"mail",
 		"end 2 end"
 	],
