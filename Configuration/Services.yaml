@@ -7,3 +7,8 @@ services:
   WapplerSystems\MailEnd2End\:
     resource: '../Classes/*'
 
+  WapplerSystems\MailEnd2End\Powermail\EventListener\ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEventListener:
+    tags:
+      - name: event.listener
+        method: __invoke
+        identifier: 'wapplersystems-mail-e2e/receiver-mail-receiver-properties-service-set-receiver-emails'
