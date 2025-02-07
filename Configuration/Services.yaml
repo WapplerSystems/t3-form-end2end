@@ -7,8 +7,9 @@ services:
   WapplerSystems\FormEnd2End\:
     resource: '../Classes/*'
 
-  WapplerSystems\FormEnd2End\Powermail\EventListener\ReceiverMailReceiverPropertiesServiceSetReceiverEmailsEventListener:
+  WapplerSystems\FormEnd2End\Powermail\EventListener\SendMailServicePrepareAndSendEventListener:
     tags:
       - name: event.listener
         method: __invoke
-        identifier: 'wapplersystems-form-e2e/receiver-mail-receiver-properties-service-set-receiver-emails'
+        identifier: 'wapplersystems-form-e2e/send-mail-service-prepare-and-send'
+
