@@ -13,3 +13,8 @@ services:
         method: __invoke
         identifier: 'wapplersystems-form-e2e/send-mail-service-prepare-and-send'
 
+  WapplerSystems\FormEnd2End\Form\EventListener\MailBeforeSendingEventListener:
+    tags:
+      - name: event.listener
+        method: __invoke
+        identifier: 'wapplersystems-form-e2e/mail-before-sending'

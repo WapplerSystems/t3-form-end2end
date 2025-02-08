@@ -9,6 +9,7 @@ use In2code\Powermail\Events\SendMailServicePrepareAndSendEvent;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class SendMailServicePrepareAndSendEventListener
@@ -16,7 +17,6 @@ final class SendMailServicePrepareAndSendEventListener
 
     public function __invoke(SendMailServicePrepareAndSendEvent $event): void
     {
-
         /** @var ServerRequestInterface $request */
         $request = $GLOBALS['TYPO3_REQUEST'];
         $headers = $request->getHeaders();
@@ -33,17 +33,17 @@ final class SendMailServicePrepareAndSendEventListener
             $mail = $event->getSendMailService()->getMail();
             $type = $event->getSendMailService()->getType();
 
+            /** @var SiteLanguage $siteLanguage */
+            $siteLanguage = $request->getAttribute('language');
+
             $subject = $event->getMailMessage()->getSubject();
-            $subject .= ' [form:' . $mail->getUid() . ',type:' . $type . ']';
+            $subject .= ' [form:' . $mail->getUid() . ',type:' . $type . ',lang:' . $siteLanguage->getLocale()->getName() . ']';
             $event->getMailMessage()->setSubject($subject);
 
             $address = new Address($email);
             $event->getMailMessage()->setTo([$address]);
 
         }
-
-
-
     }
 
 }
