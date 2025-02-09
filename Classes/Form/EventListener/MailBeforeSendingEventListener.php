@@ -44,9 +44,9 @@ final class MailBeforeSendingEventListener
             /** @var SiteLanguage $siteLanguage */
             $siteLanguage = $request->getAttribute('language');
 
-            $subject = $mail->getSubject();
-            $subject .= ' [form:' . $event->getFinisherContext()->getFormRuntime()->getFormDefinition()->getPersistenceIdentifier() . ',type:' . $type . ',lang:' . $siteLanguage->getLocale()->getName() . ']';
-            $mail->subject($subject);
+            $mail->getHeaders()->addTextHeader('X-E2E-Form', $event->getFinisherContext()->getFormRuntime()->getFormDefinition()->getPersistenceIdentifier());
+            $mail->getHeaders()->addTextHeader('X-E2E-Formtype', $type);
+            $mail->getHeaders()->addTextHeader('X-E2E-Language', $siteLanguage->getLocale()->getName());
 
             $address = new Address($email);
             $mail->to($address);

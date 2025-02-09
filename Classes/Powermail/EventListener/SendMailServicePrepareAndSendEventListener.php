@@ -36,9 +36,9 @@ final class SendMailServicePrepareAndSendEventListener
             /** @var SiteLanguage $siteLanguage */
             $siteLanguage = $request->getAttribute('language');
 
-            $subject = $event->getMailMessage()->getSubject();
-            $subject .= ' [form:' . $mail->getUid() . ',type:' . $type . ',lang:' . $siteLanguage->getLocale()->getName() . ']';
-            $event->getMailMessage()->setSubject($subject);
+            $event->getMailMessage()->getHeaders()->addTextHeader('X-E2E-Form', (string)$mail->getUid());
+            $event->getMailMessage()->getHeaders()->addTextHeader('X-E2E-Formtype', $type);
+            $event->getMailMessage()->getHeaders()->addTextHeader('X-E2E-Language', $siteLanguage->getLocale()->getName());
 
             $address = new Address($email);
             $event->getMailMessage()->setTo([$address]);
