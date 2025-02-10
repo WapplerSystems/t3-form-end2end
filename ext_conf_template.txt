@@ -4,3 +4,6 @@ key =
 
 # cat=Backend; type=string; label=Target email address
 email =
+
+# cat=Backend; type=string; label=Accepted remote hosts instead of using key. Comma separated list.
+remoteHosts =
