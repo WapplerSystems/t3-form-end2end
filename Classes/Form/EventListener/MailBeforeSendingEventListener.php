@@ -66,16 +66,15 @@ final class MailBeforeSendingEventListener
     {
         foreach ($patterns as $pattern) {
             if ($pattern === '') {
-                continue; // Leeres Muster überspringen
+                continue;
             }
-            // Ersetzen von Wildcards (*) durch reguläre Ausdrucks-Syntax (.*)
             $regex = '/^' . str_replace('\*', '.*', preg_quote($pattern, '/')) . '$/';
 
             if (preg_match($regex, $host)) {
-                return true; // Übereinstimmung gefunden
+                return true;
             }
         }
-        return false; // Keine Übereinstimmung gefunden
+        return false;
     }
 
 }
